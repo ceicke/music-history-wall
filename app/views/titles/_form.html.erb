@@ -1,0 +1,32 @@
+<%= form_with(model: title) do |form| %>
+  <% if title.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(title.errors.count, "error") %> prohibited this title from being saved:</h2>
+
+      <ul>
+        <% title.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :album_id %>
+    <%= form.collection_select :album_id, Album.order(:title), :id, :title, include_blank: true %>
+  </div>
+
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :audio_data %>
+    <%= form.file_field :audio_data %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

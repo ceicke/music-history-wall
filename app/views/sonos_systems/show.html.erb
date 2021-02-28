@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @sonos_system.name %>
+</p>
+
+<p>
+  <strong>Ip:</strong>
+  <%= @sonos_system.ip %>
+</p>
+
+<%= link_to 'Edit', edit_sonos_system_path(@sonos_system) %> |
+<%= link_to 'Back', sonos_systems_path %>
