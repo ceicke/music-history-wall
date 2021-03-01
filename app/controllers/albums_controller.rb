@@ -67,7 +67,18 @@ class AlbumsController < ApplicationController
   end
 
   def play
-    @album.sonos_play
+    s = SonosSystem.last
+    s.setup
+    s.stop
+    s.clear_queue
+
+    @album.titles.each do |title|
+      title_url = url_for title.audio_data
+      s.add_to_queue(title_url)
+    end
+
+    s.play
+
     respond_to do |format|
       format.html { redirect_to @album, notice: "Playing on Sonos" }
       format.json { head :no_content }
