@@ -7,18 +7,8 @@
   <%= link_to 'Play on Sonos', play_album_path(@album) %>
 </p>
 <p>
-  <%= @svg.html_safe %>
+  <%= image_tag @album_artwork_url, width: 400 %>
 </p>
-
-<h3>Titles</h3>
-<% @album.titles.each do |title| %>
-  <p>
-    <%= title.title %>:
-  </p>
-  <p>
-    <%= audio_tag url_for(title.audio_data), controls: true, preload: "none" %>
-  </p>
-<% end %>
 
 <%= link_to 'Edit', edit_album_path(@album) %> |
 <%= link_to 'Back', albums_path %>

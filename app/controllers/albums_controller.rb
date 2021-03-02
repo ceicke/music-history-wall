@@ -8,15 +8,7 @@ class AlbumsController < ApplicationController
 
   # GET /albums/1 or /albums/1.json
   def show
-    qrcode = RQRCode::QRCode.new(play_album_url(@album))
-    # NOTE: showing with default options specified explicitly
-    @svg = qrcode.as_svg(
-      offset: 0,
-      color: '000',
-      shape_rendering: 'crispEdges',
-      module_size: 6
-    )
-
+    @album_artwork_url = @album.get_artwork
   end
 
   # GET /albums/new
