@@ -1,24 +1,12 @@
-# README
+# Music History wall
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This software is a simple music album organization software. It is used on a wall of CDs that each have a NFS tag inside of them. The NFS tag simply holds a URL in the form of http://192.168.0.2/albums/5/play that causes the software to play the selected album on a Sonos system.
 
-Things you may want to cover:
+It is intended to run on a RaspberryPi.
 
-* Ruby version
+## Setup
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+# Configure where your database and storage for the music album lies in `config/database.yml` and `config/storage.yml`.
+# Get an API key from http://www.discogs.com and put it into your `config/credentials.yml.enc` with the key `discogs_token`
+# Run the softare with `rails s` and head over to `sonos_systems/` to setup your Sonos system
+# Upload albums, scan and enjoy the music
