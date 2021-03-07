@@ -1,0 +1,22 @@
+<h1 class="title">Charts</h1>
+
+<table class="table">
+<% @albums.each_with_index do |album, index| %>
+  <tr>
+    <td>
+      <h1 class="title">#<%= index + 1 %></h1>
+    </td>
+    <td>
+      <div class="media-left">
+        <figure class="image is-64x64">
+          <%= link_to album_path(album) do %>
+            <%= image_tag album.get_artwork, alt: album.title %>
+          <% end %>
+        </figure>
+      </div>
+    </td>
+    <td>
+      <h2 class="subtitle"><%= album.title %></h2>
+    </td>
+  </tr>
+<% end %>
