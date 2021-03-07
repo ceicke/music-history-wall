@@ -1,14 +1,12 @@
-<div class="nested-fields">
-    <%= f.hidden_field :_destroy %>
-    <div>
-        <%= f.label :title %>
-        <%= f.text_field :title %>
-    </div>
-    <div>
-        <%= f.label :audio_data %>
-        <%= f.file_field :audio_data %>
-    </div>
-    <div>
-        <%= link_to "Remove", '#', class: "remove_fields" %>
-    </div>
+<div class="nested-fields box block columns is-variable is-1-mobile is-0-tablet is-3-desktop is-8-widescreen is-2-fullhd">
+  <%= f.hidden_field :_destroy %>
+  <div class="column">
+    <%= f.text_field :title, class: 'input', placeholder: 'Song' %>
+  </div>
+  <div class="column">
+    <%= f.file_field :audio_data, class: 'input' %>
+  </div>
+  <div class="column">
+    <%= link_to "Remove", '#', class: "remove_fields button is-danger is-outlined is-small" %>
+  </div>
 </div>

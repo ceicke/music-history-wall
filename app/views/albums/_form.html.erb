@@ -1,30 +1,36 @@
 <%= form_with(model: album) do |form| %>
   <% if album.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(album.errors.count, "error") %> prohibited this album from being saved:</h2>
-
-      <ul>
-        <% album.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
+    <article class="message is-danger">
+      <div class="message-header">
+        <p><%= pluralize(album.errors.count, "error") %> prohibited this album from being saved:</p>
+      </div>
+      <div class="message-body">
+        <ul>
+          <% album.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    </article>
   <% end %>
 
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
+  <div class="field block">
+    <%= form.text_field :title, class: 'input', placeholder: 'Album title' %>
   </div>
 
   <fieldset>
-    <legend>Title:</legend>
-    <%= form.fields_for :titles do |titles_form| %>
-          <%= render "title_fields", f: titles_form %>
+    <div class="block">
+      <h2>Songs in this album</h2>
+      <%= form.fields_for :titles do |titles_form| %>
+        <%= render "title_fields", f: titles_form %>
       <% end %>
-      <%= link_to_add_fields "Add Title", form, :titles %>
+    </div>
+    <div class="block">
+      <%= link_to_add_fields "Add Song", form, :titles %>
+    </div>
   </fieldset>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit 'Save', class: 'button is-primary' %>
   </div>
 <% end %>

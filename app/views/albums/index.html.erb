@@ -1,6 +1,11 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Albums</h1>
+<div class="columns is-mobile">
+  <div class="column">
+    <div class="title">Albums</div>
+  </div>
+  <div class="column is-pulled-right">
+    <%= link_to 'New Album', new_album_path, class: 'button is-primary' %>
+  </div>
+</div>
 
 <table>
   <thead>
@@ -11,17 +16,13 @@
   </thead>
 
   <tbody>
-    <% @albums.each do |album| %>
+    <% @albums.order(:title).each do |album| %>
       <tr>
         <td><%= album.title %></td>
-        <td><%= link_to 'Show', album %></td>
-        <td><%= link_to 'Edit', edit_album_path(album) %></td>
-        <td><%= link_to 'Destroy', album, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', album, class: 'button' %></td>
+        <td><%= link_to 'Edit', edit_album_path(album), class: 'button' %></td>
+        <td><%= link_to 'Destroy', album, method: :delete, data: { confirm: 'Are you sure?' }, class: 'button is-danger is-outlined' %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Album', new_album_path %>

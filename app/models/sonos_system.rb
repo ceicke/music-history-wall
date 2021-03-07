@@ -1,5 +1,8 @@
 class SonosSystem < ApplicationRecord
 
+  validates :name, presence: true
+  validates :ip, presence: true
+
   def setup
     @speaker = Sonos::Device::Speaker.new(ip)
 

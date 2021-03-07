@@ -11,6 +11,24 @@
   </head>
 
   <body>
-    <%= yield %>
+
+    <%= render partial: 'layouts/menu' %>
+
+    <section class="section">
+      <div class="container content">
+
+        <% flash.each do |type, msg| %>
+          <div class="alert alert-info">
+            <div class="container">
+              <div class="notification is-primary">
+                <%= msg %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+
+        <%= yield %>
+      </div>
+    </section>
   </body>
 </html>

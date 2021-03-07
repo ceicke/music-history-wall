@@ -1,27 +1,28 @@
 <%= form_with(model: sonos_system) do |form| %>
   <% if sonos_system.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(sonos_system.errors.count, "error") %> prohibited this sonos_system from being saved:</h2>
-
-      <ul>
-        <% sonos_system.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
+    <article class="message is-danger">
+      <div class="message-header">
+        <p><%= pluralize(sonos_system.errors.count, "error") %> prohibited this sonos system from being saved:</p>
+      </div>
+      <div class="message-body">
+        <ul>
+          <% sonos_system.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    </article>
   <% end %>
 
   <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
+    <%= form.text_field :name, class: 'input', placeholder: 'Name' %>
   </div>
 
   <div class="field">
-    <%= form.label :ip %>
-    <%= form.text_field :ip %>
+    <%= form.text_field :ip, class: 'input', placeholder: 'IP-address' %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit 'Save', class: 'button is-primary' %>
   </div>
 <% end %>

@@ -1,14 +1,12 @@
-<p id="notice"><%= notice %></p>
-
-<h1>
+<h1 class="title">
   <%= @album.title %>
 </h1>
 <p>
-  <%= link_to 'Play on Sonos', play_album_path(@album) %>
+  <%= link_to 'Play on Sonos', play_album_path(@album), class: 'button is-primary' %>
 </p>
-<p>
-  <%= image_tag @album_artwork_url, width: 300 %>
-</p>
+<figure class="image">
+  <%= image_tag @album_artwork_url %>
+</figure
 
 <%= link_to 'Edit', edit_album_path(@album) %> |
 <%= link_to 'Back', albums_path %>
