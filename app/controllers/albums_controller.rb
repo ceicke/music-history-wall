@@ -71,6 +71,8 @@ class AlbumsController < ApplicationController
 
     s.play
 
+    @album.update_attribute(:play_count, @album.play_count + 1)
+
     respond_to do |format|
       format.html { redirect_to @album, notice: "Playing on Sonos" }
       format.json { head :no_content }
