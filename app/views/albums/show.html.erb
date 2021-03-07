@@ -4,6 +4,11 @@
 <p>
   <%= link_to 'Play on Sonos', play_album_path(@album), class: 'button is-primary' %>
 </p>
+<p>
+  <% SonosSystem.order(:name).each do |sonos_system| %>
+    <%= link_to "Play on #{sonos_system.name}", play_album_path(@album, sonos_system_id: sonos_system.id), class: 'button is-primary is-outlined is-small' %>
+  <% end %>
+</p>
 <figure class="image">
   <%= image_tag @album_artwork_url %>
 </figure

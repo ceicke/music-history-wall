@@ -64,6 +64,6 @@ class SonosSystemsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def sonos_system_params
-      params.require(:sonos_system).permit(:name, :ip)
+      params.require(:sonos_system).permit(:name, :ip, :default)
     end
 end

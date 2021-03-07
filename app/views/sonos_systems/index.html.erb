@@ -5,6 +5,7 @@
     <tr>
       <th>Name</th>
       <th>IP</th>
+      <th>Active</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -14,6 +15,7 @@
       <tr>
         <td><%= sonos_system.name %></td>
         <td><%= sonos_system.ip %></td>
+        <td><%= sonos_system.default %></td>
         <td><%= link_to 'Show', sonos_system, class: 'button' %></td>
         <td><%= link_to 'Edit', edit_sonos_system_path(sonos_system), class: 'button' %></td>
         <td><%= link_to 'Destroy', sonos_system, method: :delete, data: { confirm: 'Are you sure?' }, class: 'button is-danger is-outlined' %></td>

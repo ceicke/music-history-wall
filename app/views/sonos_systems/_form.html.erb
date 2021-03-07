@@ -22,6 +22,13 @@
     <%= form.text_field :ip, class: 'input', placeholder: 'IP-address' %>
   </div>
 
+  <div class="field">
+    <label class="checkbox">
+      <%= form.check_box :default %>
+      Default system
+    </label>
+  </div>
+
   <div class="actions">
     <%= form.submit 'Save', class: 'button is-primary' %>
   </div>

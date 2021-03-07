@@ -59,7 +59,11 @@ class AlbumsController < ApplicationController
   end
 
   def play
-    s = SonosSystem.last
+    if params[:sonos_system_id].present?
+      s = SonosSystem.find(id: params[:sonos_system_id])
+    else
+      s = SonosSystem.active.last
+    end
     s.setup
     s.stop
     s.clear_queue
