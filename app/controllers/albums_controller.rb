@@ -8,7 +8,6 @@ class AlbumsController < ApplicationController
 
   # GET /albums/1 or /albums/1.json
   def show
-    @album_artwork_url = @album.get_artwork
   end
 
   # GET /albums/new

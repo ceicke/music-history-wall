@@ -6,7 +6,10 @@ class Album < ApplicationRecord
 
   def get_artwork
     auth_wrapper = Discogs::Wrapper.new("music-history-wall", user_token: Rails.application.credentials[:discogs_token])
-    search = auth_wrapper.search(title)
+
+    search = Rails.cache.fetch("#{cache_key_with_version}/discogs_search_result", expires_in: 30.days) do
+      auth_wrapper.search(title)
+    end
 
     if search.results.length > 0
       return auth_wrapper.search(title).results.first.cover_image

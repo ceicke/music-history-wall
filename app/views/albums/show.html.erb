@@ -10,8 +10,8 @@
   <% end %>
 </p>
 <figure class="image">
-  <%= image_tag @album_artwork_url %>
-</figure
+  <%= image_tag @album.get_artwork, alt: @album.title %>
+</figure>
 
 <%= link_to 'Edit', edit_album_path(@album) %> |
 <%= link_to 'Back', albums_path %>

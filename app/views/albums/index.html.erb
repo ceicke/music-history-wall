@@ -7,9 +7,10 @@
   </div>
 </div>
 
-<table>
+<table class="table is-fullwidth">
   <thead>
     <tr>
+      <th></th>
       <th>Title</th>
       <th colspan="3"></th>
     </tr>
@@ -18,6 +19,7 @@
   <tbody>
     <% @albums.order(:title).each do |album| %>
       <tr>
+        <td><figure class="image is-64x64"><%= image_tag album.get_artwork, alt: album.title %></figure></td>
         <td><%= album.title %></td>
         <td><%= link_to 'Show', album, class: 'button' %></td>
         <td><%= link_to 'Edit', edit_album_path(album), class: 'button' %></td>
