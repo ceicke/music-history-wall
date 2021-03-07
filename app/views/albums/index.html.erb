@@ -12,16 +12,19 @@
     <tr>
       <th></th>
       <th>Title</th>
-      <th colspan="3"></th>
+      <th colspan="2"></th>
     </tr>
   </thead>
 
   <tbody>
     <% @albums.order(:title).each do |album| %>
       <tr>
-        <td><figure class="image is-64x64"><%= image_tag album.get_artwork, alt: album.title %></figure></td>
+        <td>
+          <%= link_to album_path(album) do %>
+            <figure class="image is-64x64"><%= image_tag album.get_artwork, alt: album.title %></figure>
+          <% end %>
+        </td>
         <td><%= album.title %></td>
-        <td><%= link_to 'Show', album, class: 'button' %></td>
         <td><%= link_to 'Edit', edit_album_path(album), class: 'button' %></td>
         <td><%= link_to 'Destroy', album, method: :delete, data: { confirm: 'Are you sure?' }, class: 'button is-danger is-outlined' %></td>
       </tr>
