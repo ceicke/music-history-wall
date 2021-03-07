@@ -59,7 +59,7 @@ class AlbumsController < ApplicationController
 
   def play
     if params[:sonos_system_id].present?
-      s = SonosSystem.find(id: params[:sonos_system_id])
+      s = SonosSystem.find(params[:sonos_system_id])
     else
       s = SonosSystem.active.last
     end
