@@ -11,9 +11,14 @@ class Album < ApplicationRecord
       auth_wrapper.search(title)
     end
 
-    if search.results.length > 0
-      return search.results.try(:first).try(:cover_image)
-    else
+    begin
+      if search.results.length > 0
+        return search.results.try(:first).try(:cover_image)
+      else
+        return "https://via.placeholder.com/300.jpg"
+      end
+    rescue Exception => e
+      logger.error e
       return "https://via.placeholder.com/300.jpg"
     end
   end
