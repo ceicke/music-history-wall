@@ -12,6 +12,14 @@
 <figure class="image">
   <%= image_tag @album.get_artwork, alt: @album.title %>
 </figure>
+<h3>Tracks</h3>
+<ol>
+  <% @album.titles.each do |title| %>
+  <li>
+    <%= title.title %>
+  </li>
+  <% end %>
+</ol>
 
 <%= link_to 'Edit', edit_album_path(@album) %> |
 <%= link_to 'Back', albums_path %>
