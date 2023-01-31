@@ -41,6 +41,22 @@ set :deploy_to, "/home/music/music-history-wall"
 append :linked_files, "config/master.key"
 
 namespace :deploy do
+  desc 'Restart Passenger'
+  task :restart_passenger do
+    on roles(:app) do
+      execute '/usr/bin/passenger-config restart-app /home/music/music-history-wall/current'
+    end
+  end
+
+  desc "Run rake yarn install"
+  task :yarn_install do
+    on roles(:web) do
+      within release_path do
+        execute("cd #{release_path} && yarn install --silent --no-progress --no-audit --no-optional")
+      end
+    end
+  end
+
   namespace :check do
     before :linked_files, :set_master_key do
       on roles(:app), in: :sequence, wait: 10 do
@@ -50,15 +66,8 @@ namespace :deploy do
       end
     end
   end
+
 end
 
-namespace :deploy do
-  desc 'Restart Passenger'
-  task :restart_passenger do
-    on roles(:app) do
-      execute '/usr/bin/passenger-config restart-app /home/music/music-history-wall/current'
-    end
-  end
-end
-
+before "deploy:assets:precompile", "deploy:yarn_install"
 after 'deploy:publishing', 'deploy:restart_passenger'
