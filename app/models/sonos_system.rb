@@ -5,31 +5,33 @@ class SonosSystem < ApplicationRecord
 
   scope :active, -> { where(default: true) }
 
-  def setup
-    @speaker = Sonos::Device::Speaker.new(ip)
-
-    def @speaker.group_master
-      OpenStruct.new(ip: ip)
-    end
-  end
-
   def add_to_queue(mp3 = 'http://ia801402.us.archive.org/20/items/TenD2005-07-16.flac16/TenD2005-07-16t10Wonderboy.mp3')
-    @speaker.add_to_queue mp3
-  end
-
-  def queue
-    @speaker.queue
+    sonos("add_uri_to_queue #{mp3}")
   end
 
   def clear_queue
-    @speaker.clear_queue
+    sonos('clear_queue')
   end
 
   def play
-    @speaker.play
+    sonos('play')
   end
 
   def stop
-    @speaker.stop
+    sonos('stop')
   end
+
+  def end_session
+    sonos('end_session')
+  end
+
+  def set_volume(volume = 20)
+    sonos("volumen #{volume}")
+  end
+
+  private
+    def sonos(parameters)
+      logger.info system("/usr/local/bin/sonos #{self.name} parameters")
+    end
+
 end
