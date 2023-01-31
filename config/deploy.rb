@@ -48,6 +48,13 @@ namespace :deploy do
     end
   end
 
+  desc 'Inform restart'
+  task :inform_restart do
+    on roles(:app) do
+      execute 'echo "Do not forget to restart Apache manually"'
+    end
+  end
+
   desc "Run rake yarn install"
   task :yarn_install do
     on roles(:web) do
@@ -70,4 +77,5 @@ namespace :deploy do
 end
 
 before "deploy:assets:precompile", "deploy:yarn_install"
-after 'deploy:publishing', 'deploy:restart_passenger'
+# after 'deploy:publishing', 'deploy:restart_passenger'
+after 'deploy:publishing', 'deploy:inform_restart'
