@@ -2,15 +2,16 @@
   "name": "music-history-wall",
   "private": true,
   "dependencies": {
-    "@rails/actioncable": "^6.0.0",
-    "@rails/activestorage": "^6.0.0",
-    "@rails/ujs": "^6.0.0",
-    "@rails/webpacker": "5.2.1",
+    "@rails/actioncable": "^7.0.0",
+    "@rails/activestorage": "^7.0.0",
+    "@rails/ujs": "^7.0.0",
+    "@rails/webpacker": "^5.4.3",
     "sqlite3": "^5.1.4",
     "turbolinks": "^5.2.0"
   },
   "version": "0.1.0",
   "devDependencies": {
+    "sass": "^1.57.1",
     "webpack-dev-server": "^3.11.2"
   }
 }
