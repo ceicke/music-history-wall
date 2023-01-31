@@ -63,8 +63,10 @@ class AlbumsController < ApplicationController
     else
       s = SonosSystem.active.last
     end
-    s.setup
+  
     s.stop
+    s.end_session
+    s.set_volume 20
     s.clear_queue
 
     @album.titles.each do |title|
@@ -72,12 +74,12 @@ class AlbumsController < ApplicationController
       s.add_to_queue(title_url)
     end
 
-    s.play
+    #s.play
 
     @album.update_attribute(:play_count, @album.play_count + 1)
 
     respond_to do |format|
-      format.html { redirect_to @album, notice: "Playing on Sonos" }
+      format.html { redirect_to @album, notice: "Playing on #{s.name}" }
       format.json { head :no_content }
     end
   end

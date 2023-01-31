@@ -8,7 +8,11 @@ class Album < ApplicationRecord
     auth_wrapper = Discogs::Wrapper.new("music-history-wall", user_token: Rails.application.credentials[:discogs_token])
 
     search = Rails.cache.fetch("#{cache_key_with_version}/discogs_search_result", expires_in: 30.days) do
-      auth_wrapper.search(title)
+      begin
+        auth_wrapper.search(title)
+      rescue Exception => e
+        logger.error e
+      end
     end
 
     begin
