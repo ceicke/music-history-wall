@@ -63,7 +63,6 @@ class AlbumsController < ApplicationController
     else
       s = SonosSystem.active.last
     end
-  
     s.stop
     s.end_session
     s.set_volume 20

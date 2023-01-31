@@ -26,12 +26,12 @@ class SonosSystem < ApplicationRecord
   end
 
   def set_volume(volume = 20)
-    sonos("volumen #{volume}")
+    sonos("volume #{volume}")
   end
 
   private
     def sonos(parameters)
-      logger.info system("/usr/local/bin/sonos #{self.name} parameters")
+      logger.info system("/usr/local/bin/soco #{self.name} #{parameters}")
     end
 
 end
