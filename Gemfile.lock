@@ -268,7 +268,7 @@ PLATFORMS
 DEPENDENCIES
   bcrypt_pbkdf (>= 1.0, < 2.0)
   bootsnap (>= 1.4.4)
-  bulma-rails (~> 0.9.1)
+  bulma-rails (~> 0.9.4)
   byebug
   capistrano (~> 3.10)
   capistrano-rails (~> 1.6)

@@ -4,7 +4,9 @@
 <% @albums.each_with_index do |album, index| %>
   <tr>
     <td>
-      <h1 class="title">#<%= index + 1 %></h1>
+      <p class="title is-2">
+        <%= index + 1 %>
+      </p>
     </td>
     <td>
       <div class="media-left">
@@ -16,7 +18,9 @@
       </div>
     </td>
     <td>
-      <h2 class="subtitle"><%= album.title %></h2>
+      <p class="title is-2 mb-4"><%= album.title %></p>
+      <p class="subtitle is-4">Plays: <%= album.play_count %></p>
     </td>
   </tr>
 <% end %>
+
