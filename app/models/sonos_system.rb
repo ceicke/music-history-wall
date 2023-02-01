@@ -1,7 +1,6 @@
 class SonosSystem < ApplicationRecord
 
   validates :name, presence: true
-  validates :ip, presence: true
 
   scope :active, -> { where(default: true) }
 

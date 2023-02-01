@@ -17,7 +17,7 @@ class SonosSystemsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create sonos_system" do
     assert_difference('SonosSystem.count') do
-      post sonos_systems_url, params: { sonos_system: { ip: @sonos_system.ip, name: @sonos_system.name } }
+      post sonos_systems_url, params: { sonos_system: { name: @sonos_system.name } }
     end
 
     assert_redirected_to sonos_system_url(SonosSystem.last)
@@ -34,7 +34,7 @@ class SonosSystemsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update sonos_system" do
-    patch sonos_system_url(@sonos_system), params: { sonos_system: { ip: @sonos_system.ip, name: @sonos_system.name } }
+    patch sonos_system_url(@sonos_system), params: { sonos_system: { name: @sonos_system.name } }
     assert_redirected_to sonos_system_url(@sonos_system)
   end
 

@@ -2,8 +2,6 @@
 
 one:
   name: MyString
-  ip: MyString
 
 two:
   name: MyString
-  ip: MyString
