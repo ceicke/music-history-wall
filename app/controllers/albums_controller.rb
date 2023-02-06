@@ -66,7 +66,6 @@ class AlbumsController < ApplicationController
 
     s.stop
     s.end_session
-    s.set_volume 0
     s.clear_queue
 
     s.add_to_queue url_for @album.titles.first.audio_data
