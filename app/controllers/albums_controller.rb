@@ -69,12 +69,13 @@ class AlbumsController < ApplicationController
     s.set_volume 20
     s.clear_queue
 
-    @album.titles.each do |title|
-      title_url = url_for title.audio_data
-      s.add_to_queue(title_url)
-    end
-
+    s.add_to_queue url_for @album.titles.first.audio_data
     s.play
+
+    @album.titles[1..].each do |title|
+      title_url = url_for title.audio_data
+      s.delay.add_to_queue(title_url)
+    end
 
     @album.update_attribute(:play_count, @album.play_count + 1)
 

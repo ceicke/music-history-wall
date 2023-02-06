@@ -50,15 +50,22 @@ namespace :deploy do
       end
     end
   end
-end
 
-namespace :deploy do
   desc 'Restart Passenger'
   task :restart_passenger do
     on roles(:app) do
       execute '/usr/bin/passenger-config restart-app /home/music/music-history-wall/current'
     end
   end
+
+  desc 'Restart delayed jobs'
+  task :restart_delayed_jobs do
+    on roles(:app) do
+      execute "RAILS_ENV=production bin/delayed_job restart"
+    end
+  end
+
 end
 
 after 'deploy:publishing', 'deploy:restart_passenger'
+after 'deploy:restart_passenger', 'deploy:restart_delayed_jobs'
