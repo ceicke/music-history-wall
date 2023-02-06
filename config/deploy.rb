@@ -61,7 +61,7 @@ namespace :deploy do
   desc 'Restart delayed jobs'
   task :restart_delayed_jobs do
     on roles(:app) do
-      execute "RAILS_ENV=production bin/delayed_job restart"
+      execute "/bin/bash --login -c 'rvm use 2.7.1 && cd #{release_path} && RAILS_ENV=production bundle exec bin/delayed_job restart'"
     end
   end
 
